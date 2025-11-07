@@ -1,16 +1,14 @@
 [package]
-name = "litcrypt"
-authors = ['Robin Syihab (r@ansvia.com)']
+name = "notlit"
+#authors = ['Robin Syihab (r@ansvia.com)']
 version = "0.4.0"
-description = "Let's encrypt your string statically during compile time"
+#description = "Let's encrypt your string statically during compile time"
 license = "Apache-2.0"
-repository = "https://github.com/anvie/litcrypt.rs"
-readme = "README.md"
-keywords = ["litcrypt", "encrypt", "compile"]
+#readme = "README.md"
 
 [lib]
 proc-macro = true
-path = "src/litcrypt.rs"
+path = "src/notlit.rs"
 
 [dev-dependencies]
 expectest = { version = "0.12.0", features = [] }

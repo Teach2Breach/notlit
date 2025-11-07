@@ -20,16 +20,16 @@
 //!
 //! ```rust
 //! #[macro_use]
-//! extern crate litcrypt;
+//! extern crate notlit;
 //!
-//! use_litcrypt!("MY-SECRET-SPELL");
+//! use_notlit!("MY-SECRET-SPELL");
 //!
 //! fn main(){
 //!     println!("his name is: {}", lc!("Voldemort"));
 //! }
 //! ```
 //!
-//! The [`use_litcrypt!`] macro must be called first, for initialization. Its parameter is the
+//! The [`use_notlit!`] macro must be called first, for initialization. Its parameter is the
 //! secret key that is used to encrypt all [`lc!`]-wrapped string literal(s).
 //! This key is also encrypted and will not visible in a static analyzer.
 //!
@@ -98,7 +98,7 @@ fn get_magic_spell() -> Vec<u8> {
 ///
 /// This key is also encrypted an  will not visible in a static analyzer.
 #[proc_macro]
-pub fn use_litcrypt(_tokens: TokenStream) -> TokenStream {
+pub fn use_notlit(_tokens: TokenStream) -> TokenStream {
     let magic_spell = get_magic_spell();
 
     let encdec_func = quote! {
@@ -173,7 +173,7 @@ pub fn use_litcrypt(_tokens: TokenStream) -> TokenStream {
     result.into()
 }
 
-/// Encrypts the resp. string with the key set before, via calling [`use_litcrypt!`].
+/// Encrypts the resp. string with the key set before, via calling [`use_notlit!`].
 #[proc_macro]
 pub fn lc(tokens: TokenStream) -> TokenStream {
     let mut something = String::from("");
@@ -188,7 +188,7 @@ pub fn lc(tokens: TokenStream) -> TokenStream {
     encrypt_string(something)
 }
 
-/// Encrypts an environment variable at compile time with the key set before, via calling [`use_litcrypt!`].
+/// Encrypts an environment variable at compile time with the key set before, via calling [`use_notlit!`].
 #[proc_macro]
 pub fn lc_env(tokens: TokenStream) -> TokenStream {
     let mut var_name = String::from("");
